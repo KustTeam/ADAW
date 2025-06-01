@@ -10,7 +10,7 @@ public class Dialog : MonoBehaviour
     private povorot linkPovorot;
     public bool HitTarget = false;
     public Animator anim;
-
+    
     private void Start() 
     {
         GameObject player = GameObject.FindWithTag("Player");
@@ -19,65 +19,60 @@ public class Dialog : MonoBehaviour
         text1 = GameObject.FindWithTag("dialog");
         linkPovorot = camera.GetComponent<povorot>();
     }
-
     private void Update() 
     {
-        // Обработка состояния диалога
-        if (dialog > 2)
+        if (dialog == 0)
         {
-            dialog = 0; // Сброс состояния
+            animText1 = 0;
+            cont.enabled = true;
+            linkPovorot.enabled = true;
+        }
+        else if (dialog == 1)
+        {
+            animText1 = 0;
+            cont.enabled = true;
+            linkPovorot.enabled = true;
+        }
+        else if (dialog == 2)
+        {
+            animText1 = 1;
+            cont.enabled = false;
+            linkPovorot.enabled = false;
+        }
+        else if (dialog > 2)
+        {
+            dialog = 0;
         }
 
-        switch (dialog)
+        //анимация диалогов
+        if (animText1 == 1)
         {
-            case 0:
-                animText1 = 0;
-                cont.enabled = true;
-                linkPovorot.enabled = true;
-                break;
-
-            case 1:
-                animText1 = 0;
-                cont.enabled = true;
-                linkPovorot.enabled = true;
-                break;
-
-            case 2:
-                animText1 = 1;
-                cont.enabled = false;
-                linkPovorot.enabled = false;
-                break;
-
+            anim.SetBool("IsDialogStart", true);
         }
-
-
-        if (anim != null) // Убедитесь, что anim не равен null
+        else if (animText1 == 0)
         {
-            anim.SetBool("IsDialogStart", animText1 == 1);
+            anim.SetBool("IsDialogStart", false);
         }
-
-        if (HitTarget) 
+    
+        if (HitTarget == true) 
         {
             if (Input.GetKey(KeyCode.E) && tim <= 0f)
             {
-                dialog++;
-                tim = 0.3f; // Задержка между нажатиями
+                dialog += 1;
+                tim = 0.3f;
             }
-            
             if (tim > 0)
             {
-                tim -= Time.deltaTime; // Уменьшаем таймер
+                tim = tim - Time.deltaTime;
             }
-            
             if (dialog == 0)
             {
-                dialog++; // Начинаем диалог с первого состояния
+                dialog = 1;
             }    
         }
-        
-        if (!HitTarget)
+        else
         {
-            dialog = 0; // Сброс состояния при выходе из зоны взаимодействия
+            dialog = 0;
         }
     }
 }

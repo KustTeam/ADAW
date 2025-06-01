@@ -7,19 +7,14 @@ public class DialogClients : MonoBehaviour
 {
     private int FirstEat;
     private int Privet;
+    private int Spawn;
     private int macsEat = 10;
     private Transform tran;
-    private Transform playerTransform;
-    public static int PlayerOnTrigger = 0;
-    private ClientsTimer ClientsTimer;
-    public GameObject timer;
-    public int GoodEat = 0;
-    public GameObject objectEat;
-
+    private int x;
 
     [SerializeField] private TextMeshProUGUI text;
 
-    public List<string> VegEat = new List<string> { "жареную картошку ", "дешёвый салат ", "борщ без мяса (для бедных) ", "недоеденные овощи ", "фруктовый салат ", "просто ягод ", "брокколи с брокколи ", "макароны ", "пюре ", "кашу " };
+    public List<string> VegEat = new List<string> { "жареную картошку ", "дешёвый салат ", "борщ без мяса (для бедных) ", "недоеденные овощи ", "фруктовый салат ", "просто ягоды ", "брокколи с брокколи ", "макароны ", "пюре ", "кашу " };
 
     public List<string> VariantDialog = new List<string>
     {
@@ -43,109 +38,70 @@ public class DialogClients : MonoBehaviour
         text = GameObject.FindWithTag("TextDialog").GetComponent<TextMeshProUGUI>();
         tran = GetComponent<Transform>();
         Privet = Random.Range(0, VariantDialog.Count);
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        playerTransform = player.transform;
-        ClientsTimer = timer.GetComponent<ClientsTimer>();
+        Spawn = Random.Range(1, 10); // Изменено на 10, чтобы включить 
+        x = Random.Range(0, 2);
+        StartCoroutine(SpawnCl());
     }
-    
-
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            PlayerOnTrigger = 1;
-            if (ClientsTimer.readyClients == true && GoodEat == 0)
-            {
-                text.text = VariantDialog[Privet] + VegEat[FirstEat];
-            }
-            else if (GoodEat == 1)
-            {
-                text.text = "Спасибо.";
-            }
-            else if (GoodEat == -1)
-            {
-                text.text = "Это не то что я заказывал.";
-            }
-            else
-            {
-                text.text = "Можете не беспокоиться, я скоро уйду.";
-            }
+            text.text = VariantDialog[Privet] + VegEat[FirstEat];
         }
-    }
 
-    private void OnTriggerExit(Collider other) 
-    {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("NPS"))
         {
-            PlayerOnTrigger = 0;
+                Spawn = Random.Range(1, 10); // Генерируем новую позицию
+                x = Random.Range(0, 2);
+                StartCoroutine(SpawnCl());
         }
+
     }
     private void OnTriggerEnter(Collider other) 
     {
-        if (other.CompareTag("фруктовый салат") || other.CompareTag("пюре") || other.CompareTag("просто ягоды") || other.CompareTag("недоеденные овощи") || other.CompareTag("макароны") || other.CompareTag("каша") || other.CompareTag("жаренная картошка") || other.CompareTag("дешёвый салат") || other.CompareTag("брокколи с брокколи") || other.CompareTag("борщ без мяса"))
+        if (other.CompareTag("Eat"))
         {
-            string objectName = other.gameObject.tag;
-            objectEat = other.gameObject;
-            if (ClientsTimer.readyClients == true)
+            string objectName = other.gameObject.name;
+
+            if (objectName == VegEat[FirstEat])
             {
-                if (FirstEat == 0 && objectName == "жаренная картошка") 
-                {
-                    Debug.Log("Молодец");
-                    GoodEat = 1;
-                }
-                else if (FirstEat == 8 && objectName == "пюре") 
-                {
-                    Debug.Log("Молодец");
-                    GoodEat = 1;
-                }
-                else if (FirstEat == 5 && objectName == "просто ягоды") 
-                {
-                    Debug.Log("Молодец");
-                    GoodEat = 1;
-                }
-                else if (FirstEat == 3 && objectName == "недоеденные овощи") 
-                {
-                    Debug.Log("Молодец");
-                    GoodEat = 1;
-                }
-                else if (FirstEat == 7 && objectName == "макароны") 
-                {
-                    Debug.Log("Молодец");
-                    GoodEat = 1;
-                }
-                else if (FirstEat == 9 && objectName == "каша") 
-                {
-                    Debug.Log("Молодец");
-                    GoodEat = 1;
-                }
-                else if (FirstEat == 4 && objectName == "фруктовый салат") 
-                {
-                    Debug.Log("Молодец");
-                    GoodEat = 1;
-                }
-                else if (FirstEat == 1 && objectName == "дешёвый салат") 
-                {
-                    Debug.Log("Молодец");
-                    GoodEat = 1;
-                }
-                else if (FirstEat == 6 && objectName == "брокколи с брокколи") 
-                {
-                    Debug.Log("Молодец");
-                    GoodEat = 1;
-                }
-                else if (FirstEat == 2 && objectName == "борщ без мяса") 
-                {
-                    Debug.Log("Молодец");
-                    GoodEat = 1;
-                }
-                else
-                {
-                    Debug.Log("Ты дебил");
-                    GoodEat = -1;
-                }
-                other.gameObject.tag = "Eat";
+                Debug.Log("Молодец");
+            }
+            else
+            {
+                Debug.Log("Ты дебил");
             }
         }
+    }
+    private IEnumerator SpawnCl()
+    {
+        if (x == 0)
+        {
+            x = 4;
+            tran.eulerAngles = new Vector3(0, 180, 0);
+        }
+        else if (x == 1)
+        {
+            x = -4;
+            tran.eulerAngles = new Vector3(0, 0, 0);
+        }
+        // Определяем позицию в зависимости от значения Spawn
+        Vector3 newPosition = Vector3.zero;
+        switch (Spawn)
+        {
+            case 1: newPosition = new Vector3(x, 2.5f, -10); break;
+            case 2: newPosition = new Vector3(x, 2.5f, -25); break;
+            case 3: newPosition = new Vector3(x, 2.5f, -40); break;
+            case 4: newPosition = new Vector3(x + 20, 2.5f, -10); break;
+            case 5: newPosition = new Vector3(x + 20, 2.5f, -25); break;
+            case 6: newPosition = new Vector3(x + 20, 2.5f, -40); break;
+            case 7: newPosition = new Vector3(x - 20, 2.5f, -10); break;
+            case 8: newPosition = new Vector3(x - 20, 2.5f, -25); break;
+            case 9: newPosition = new Vector3(x - 20, 2.5f, -40); break;
+        }
+
+        tran.position = newPosition;
+        yield return new WaitForSeconds(0);
     }
 }

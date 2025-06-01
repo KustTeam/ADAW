@@ -8,15 +8,15 @@ public class Take : MonoBehaviour
     public LayerMask tableLayer; // Слой стола
     public LayerMask PawykLayer;
     public static string eatAtHand = null;
-    public float teleportDistance = 5f; // Максимальная дистанция для телепортации
+    public float teleportDistance = 7.2f; // Максимальная дистанция для телепортации
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && currentItem == null) // Подбор предмета
+        if (Input.GetKeyDown(KeyCode.Mouse0) && currentItem == null) // Подбор предмета
         {
             TryPickUpItem();
         }
-        else if (Input.GetKeyDown(KeyCode.E) && currentItem != null) // Телепортация предмета
+        else if (Input.GetKeyDown(KeyCode.Mouse1) && currentItem != null) // Телепортация предмета
         {
             TryTeleportItem();
         }
@@ -28,7 +28,7 @@ public class Take : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 5f); // Радиус подбора
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.CompareTag("Eat")) // Предмет должен иметь тег "Item"
+            if (hitCollider.CompareTag("фруктовый салат") || hitCollider.CompareTag("пюре") || hitCollider.CompareTag("просто ягоды") || hitCollider.CompareTag("недоеденные овощи") || hitCollider.CompareTag("макароны") || hitCollider.CompareTag("каша") || hitCollider.CompareTag("жаренная картошка") || hitCollider.CompareTag("дешёвый салат") || hitCollider.CompareTag("брокколи с брокколи") || hitCollider.CompareTag("борщ без мяса")) // Предмет должен иметь тег "Item"
             {
                 currentItem = hitCollider.gameObject; // Сохраняем текущий предмет
                 hitCollider.gameObject.SetActive(false); // Скрываем предмет после подбора

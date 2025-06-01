@@ -28,7 +28,6 @@ public class Interactive : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, transform.forward, out hit, distance))
             {
-                Debug.Log(hit.transform.name);
                 if (hit.transform.CompareTag("AnimatedDoor"))
                 {
                     Animator anim = hit.transform.GetComponent<Animator>();

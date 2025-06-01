@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1442748103732040002}
   m_Layer: 0
   m_Name: "\u0431\u0440\u043E\u043A\u043A\u043E\u043B\u0438 \u0441 \u0431\u0440\u043E\u043A\u043A\u043E\u043B\u0438"
-  m_TagString: Eat
+  m_TagString: "\u0431\u0440\u043E\u043A\u043A\u043E\u043B\u0438 \u0441 \u0431\u0440\u043E\u043A\u043A\u043E\u043B\u0438"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

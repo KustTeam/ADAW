@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4581502826976683839}
   m_Layer: 0
   m_Name: "\u043F\u044E\u0440\u0435"
-  m_TagString: Eat
+  m_TagString: "\u043F\u044E\u0440\u0435"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

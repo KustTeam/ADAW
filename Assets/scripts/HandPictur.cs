@@ -16,7 +16,7 @@ public class HandPictur : MonoBehaviour
         if (Take.eatAtHand != null)
         {
             imag.enabled = true;
-            if (Take.eatAtHand == "жареную картошку")
+            if (Take.eatAtHand == "жаренная картошка")
             {
                 imag.texture = Resources.Load<Texture>("Textur/Eat2D/Жареная картофан");
             }
@@ -24,7 +24,7 @@ public class HandPictur : MonoBehaviour
             {
                 imag.texture = Resources.Load<Texture>("Textur/Eat2D/Салат дешёвый");
             }
-            if (Take.eatAtHand == "борщ без мяса (для бедных)")
+            if (Take.eatAtHand == "борщ без мяса")
             {
                 imag.texture = Resources.Load<Texture>("Textur/Eat2D/борщ");
             }
@@ -32,7 +32,7 @@ public class HandPictur : MonoBehaviour
             {
                 imag.texture = Resources.Load<Texture>("Textur/Eat2D/Броколли с броколли");
             }
-            if (Take.eatAtHand == "кашу")
+            if (Take.eatAtHand == "каша")
             {
                 imag.texture = Resources.Load<Texture>("Textur/Eat2D/каша");
             }

@@ -38,7 +38,7 @@ public class Dialog_Povar : MonoBehaviour
         }
 
         //получение доступа
-        GameObject NPS = GameObject.FindWithTag("NPS");
+        GameObject NPS = GameObject.FindWithTag("NPSS");
         if (NPS != null)
         {
             cont = NPS.GetComponent<Dialog>();

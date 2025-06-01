@@ -1179,7 +1179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7af6db1faa8c74419d3e4c387da064d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
+  text: {fileID: 373098992}
   client: {fileID: 4240349393746030842, guid: 6ec4f742b5c7a25498f97d0cde40def5, type: 3}
 --- !u!114 &140009454
 MonoBehaviour:
@@ -1841,7 +1841,6 @@ GameObject:
   - component: {fileID: 237239859}
   - component: {fileID: 237239858}
   - component: {fileID: 237239857}
-  - component: {fileID: 237239856}
   m_Layer: 0
   m_Name: Cube (7)
   m_TagString: menu
@@ -1849,27 +1848,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &237239856
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 237239855}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &237239857
 Animator:
   serializedVersion: 5
@@ -3254,6 +3232,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPS
       objectReference: {fileID: 0}
+    - target: {fileID: 5159213506510537936, guid: 6ec4f742b5c7a25498f97d0cde40def5, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1689666025}
+    - target: {fileID: 5480814254430036151, guid: 6ec4f742b5c7a25498f97d0cde40def5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5924372422234179658, guid: 6ec4f742b5c7a25498f97d0cde40def5, type: 3}
       propertyPath: anim
       value: 
@@ -3306,10 +3292,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8057304928073933168, guid: 6ec4f742b5c7a25498f97d0cde40def5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7215419783287547555, guid: 6ec4f742b5c7a25498f97d0cde40def5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 6ec4f742b5c7a25498f97d0cde40def5, type: 3}
 --- !u!1001 &489381339
 PrefabInstance:
@@ -4026,7 +4019,6 @@ GameObject:
   - component: {fileID: 623029345}
   - component: {fileID: 623029349}
   - component: {fileID: 623029351}
-  - component: {fileID: 623029352}
   - component: {fileID: 623029353}
   m_Layer: 0
   m_Name: Cube
@@ -4162,27 +4154,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &623029352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 623029344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76d7efa19dcf081428a4864ab8486653, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportOffset: 0.9
-  distanceFromTable: -1
-  tableLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  PawykLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  teleportDistance: 5
 --- !u!114 &623029353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5851,9 +5822,10 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
-  - component: {fileID: 963194230}
-  - component: {fileID: 963194231}
   - component: {fileID: 963194232}
+  - component: {fileID: 963194231}
+  - component: {fileID: 963194230}
+  - component: {fileID: 963194233}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5971,21 +5943,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b0cd4702325728499ff72b4ce991f8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myCanvasGroup0: {fileID: 1565854393}
-  myCanvasGroup1: {fileID: 947326024}
-  distance: 7.2
---- !u!114 &963194232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d6612c92e96d7b49abc352afe20c89a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -5999,6 +5956,42 @@ MonoBehaviour:
   anim: {fileID: 2133618638}
   anim_menu_vibar: {fileID: 825679159}
   anim_menu: {fileID: 237239857}
+--- !u!114 &963194232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0cd4702325728499ff72b4ce991f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCanvasGroup0: {fileID: 1565854393}
+  myCanvasGroup1: {fileID: 947326024}
+  distance: 7.2
+--- !u!114 &963194233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76d7efa19dcf081428a4864ab8486653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportOffset: 1.51
+  distanceFromTable: -1
+  tableLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  PawykLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  teleportDistance: 5
 --- !u!1 &969758019
 GameObject:
   m_ObjectHideFlags: 0
@@ -8398,7 +8391,7 @@ MonoBehaviour:
   DaText: {fileID: 231453912}
   Menu_Text: {fileID: 1974965168}
   Menu_false_Text: {fileID: 117401885}
-  anim: {fileID: 237239857}
+  anim: {fileID: 0}
   knopki: {fileID: 2133618642}
   bluda: 0
 --- !u!114 &1287021060

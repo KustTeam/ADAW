@@ -13,7 +13,9 @@ public class Dialog_Povar : MonoBehaviour
     public pinkti linkPinkti;
     public int moment = 0;
     public int moment_menu = 0;
+    public bool Is_count;
     public Animator anim;
+    public Animator anim_false;
     public Animator anim_menu_vibar;
     public Animator anim_menu;
 
@@ -29,6 +31,26 @@ public class Dialog_Povar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (linkPinkti.false_count == true)
+        {
+            Is_count = true;
+            linkPinkti.false_count = false;
+            contDialogNow.dialogNow = true;
+            anim_false.SetBool("dialog", true);
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+
+        if(Is_count == true)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Is_count = false;
+                contDialogNow.dialogNow = false;
+                anim_false.SetBool("dialog", false);
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
+
         if (moment == 2)
         {
             moment = 0;

@@ -9,14 +9,16 @@ public class Dialog : MonoBehaviour
     public controle cont;
     private povorot linkPovorot;
     public bool HitTarget = false;
-    public Animator anim;
-    
+    public anim checking;
+
     private void Start() 
     {
         GameObject player = GameObject.FindWithTag("Player");
         cont = player.GetComponent<controle>();
         GameObject camera = GameObject.FindWithTag("MainCamera");
         text1 = GameObject.FindWithTag("dialog");
+        GameObject window = GameObject.FindWithTag("dialog");
+        checking = window.GetComponent<anim>();
         linkPovorot = camera.GetComponent<povorot>();
     }
     private void Update() 
@@ -47,13 +49,13 @@ public class Dialog : MonoBehaviour
         //анимация диалогов
         if (animText1 == 1)
         {
-            anim.SetBool("IsDialogStart", true);
+            checking.check = true;
         }
         else if (animText1 == 0)
         {
-            anim.SetBool("IsDialogStart", false);
+            checking.check = false;
         }
-    
+
         if (HitTarget == true) 
         {
             if (Input.GetKey(KeyCode.E) && tim <= 0f)

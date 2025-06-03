@@ -50,7 +50,7 @@ MonoBehaviour:
   dialog: 0
   cont: {fileID: 0}
   HitTarget: 0
-  anim: {fileID: 0}
+  checking: {fileID: 0}
 --- !u!65 &2889826288262943667
 BoxCollider:
   m_ObjectHideFlags: 0

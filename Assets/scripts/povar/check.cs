@@ -21,7 +21,7 @@ public class check : MonoBehaviour
         bool eatInside = false;
         foreach (var hit in hits)
         {
-            if (hit.CompareTag("Eat"))
+            if (hit.CompareTag("фруктовый салат") || hit.CompareTag("жаренная картошка") || hit.CompareTag("каша") || hit.CompareTag("пюре") || hit.CompareTag("просто ягоды") || hit.CompareTag("недоеденные овощи") || hit.CompareTag("макароны") || hit.CompareTag("дешёвый салат") || hit.CompareTag("брокколи с брокколи") || hit.CompareTag("борщ без мяса"))
             {
                 eatInside = true;
                 Debug.Log("tyu");

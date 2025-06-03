@@ -11,6 +11,7 @@ public class time_and_clients : MonoBehaviour
     private int max_clients = 1;
     public GameObject client;
     public static bool endClient = false;
+    private bool x = false;
 
     void Start()
     {
@@ -20,6 +21,22 @@ public class time_and_clients : MonoBehaviour
     {
         text.text = point.ToString();
 
+
+        if (x == true)
+        {
+            if (clients == 0)
+            {
+                endClient = true;
+                clients = max_clients;
+                StartCoroutine(SpawnClients());
+            }
+            else if (clients > 0)
+            {
+                x = false;
+                endClient = false;
+            }
+        }
+        
 
         if (point >= 10 && point < 500)
         {
@@ -70,13 +87,12 @@ public class time_and_clients : MonoBehaviour
     {
         if (clients == 0)
         {
-            endClient = true;
-            clients = max_clients;
-            StartCoroutine(SpawnClients());
+            x = true;
         }
         else if (clients > 0)
         {
             endClient = false;
+            x = false;
         }
     }
     
@@ -84,7 +100,6 @@ public class time_and_clients : MonoBehaviour
     {
         for(var i = 0; i < max_clients; i++)
         {
-            Debug.Log(clients);
             Instantiate(client, transform.position, transform.rotation);
             yield return new WaitForSeconds(0);
         }

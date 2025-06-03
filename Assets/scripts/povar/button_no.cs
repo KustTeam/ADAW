@@ -10,8 +10,8 @@ public class button_no : MonoBehaviour
     public CanvasGroup Menu_Text;
     public CanvasGroup Menu_false_Text;
     private Dialog_Povar linkDialog_Povar;
-    public Animator anim;
     public buttons_off knopki;
+    public Animator anim;
     public bool bluda;
 
     public void Start()

@@ -9,17 +9,18 @@ public class Dialog : MonoBehaviour
     public controle cont;
     private povorot linkPovorot;
     public bool HitTarget = false;
-    public anim checking;
+    public animated checking;
 
     private void Start() 
     {
         GameObject player = GameObject.FindWithTag("Player");
         cont = player.GetComponent<controle>();
         GameObject camera = GameObject.FindWithTag("MainCamera");
+        linkPovorot = camera.GetComponent<povorot>();
         text1 = GameObject.FindWithTag("dialog");
         GameObject window = GameObject.FindWithTag("dialog");
-        checking = window.GetComponent<anim>();
-        linkPovorot = camera.GetComponent<povorot>();
+        checking = window.GetComponent<animated>();
+        
     }
     private void Update() 
     {

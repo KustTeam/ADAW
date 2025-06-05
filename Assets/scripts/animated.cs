@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class anim : MonoBehaviour
+public class animated : MonoBehaviour
 {
     public Animator animation;
     public bool check;

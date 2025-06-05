@@ -21,14 +21,14 @@ public class BlocknotUpDown : MonoBehaviour
     {
         if (Blockot == true && transform.position.y < 180)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + 30, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y + 130, transform.position.z);
             cont.enabled = false;
             linkPovorot.enabled = false;
             Cursor.lockState = CursorLockMode.None;
         }
         else if (Blockot == false && transform.position.y > -200)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y - 30, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y - 130, transform.position.z);
             cont.enabled = true;
             linkPovorot.enabled = true;
             Cursor.lockState = CursorLockMode.Locked;

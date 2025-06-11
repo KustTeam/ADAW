@@ -15,6 +15,10 @@ public class DialogClients : MonoBehaviour
     public GameObject timer;
     public int GoodEat = 0;
     public GameObject objectEat;
+    private bool x = false;
+    private Dialog dialogComponent;
+
+    
 
 
     [SerializeField] private TextMeshProUGUI text;
@@ -46,6 +50,8 @@ public class DialogClients : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
         ClientsTimer = timer.GetComponent<ClientsTimer>();
+        GameObject nps = GameObject.FindWithTag("NPSS");
+        dialogComponent = nps.GetComponent<Dialog>();
     }
     
 
@@ -57,7 +63,18 @@ public class DialogClients : MonoBehaviour
             PlayerOnTrigger = 1;
             if (ClientsTimer.readyClients == true && GoodEat == 0)
             {
-                text.text = VariantDialog[Privet] + VegEat[FirstEat];
+                if (x == false)
+                {
+                    text.text = VariantDialog[Privet] + VegEat[FirstEat];
+                    if (dialogComponent.dialog > 2)
+                    {
+                        x = true;
+                    }
+                }
+                else if (x == true)
+                {
+                    text.text = "Я жду свой заказ";
+                }
             }
             else if (GoodEat == 1)
             {
